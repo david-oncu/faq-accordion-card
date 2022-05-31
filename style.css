@@ -1,0 +1,248 @@
+:root{
+
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 12px;
+
+    /*font-weight*/
+
+    --ff-regular: 400;
+    --ff-bold: 700;   
+    
+    /*text-colors*/
+  
+    --clr-bg-gradient-light: hsl(273, 75%, 66%);
+    --clr-bg-gradient-dark: hsl(240, 73%, 65%);
+
+    --clr-divier: hsl(240, 5%, 91%);
+
+
+    --clr-text-hover: hsl(14, 88%, 65%);
+
+    --clr-question: hsl(237, 12%, 33%);
+    --clr-description: hsl(240, 6%, 50%);
+    --clr-question-active: hsl(238, 29%, 16%);
+
+    /*neutral-color*/
+
+    --clr-tp: transparent;
+    --clr-white: #ffffff;
+
+    
+}
+
+
+/*null*/
+
+*,
+*::before,
+*::after{
+margin: 0;padding: 0;box-sizing: border-box;
+}
+
+
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	-webkit-clip-path: inset(50%) !important;
+		clip-path: inset(50%) !important; 
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;            
+}
+
+
+/*faq card container*/
+
+.faq-section{
+    display: grid;
+    place-items: center;
+
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(var(--clr-bg-gradient-light), var(--clr-bg-gradient-dark));
+}
+
+.faq-card {
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 31.25rem;
+
+    margin: 8rem 0 6rem 0;
+    background-color: var(--clr-white);
+
+    border-radius: 2rem;
+    box-shadow: 10px 10px 50px #00000053;
+
+}
+
+/*card image*/
+
+.faq-image-container{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+}
+
+.faq-image-bg{
+    z-index: 5;
+    width: 280px;
+}
+
+.faq-image{
+    position:absolute;
+    z-index: 10;
+    
+    width: 22.5rem;
+    top: -100%;
+}
+
+.faq-image-desktop, 
+.faq-image-cube-desktop{
+    display: none;
+}
+
+
+/*card text content*/
+
+.faq-text-container{
+    padding: 0rem 2.5rem 4rem 2.5rem;
+}
+
+.faq-title{
+    display: flex;
+    justify-content: center;
+    padding-block: 1rem;
+
+    font-size: 2.5rem;
+    color: var(--clr-question-active);
+    font-weight: var(--ff-bold);
+}
+
+
+.faq-question-single{
+    border-bottom: 1px solid var(--clr-divier);
+    padding-block: 1rem;
+
+    cursor: pointer;
+
+    transition: max-height 0.5s ease-in-out;
+}
+
+.faq-question-arrow{
+    height: 100%;
+    transition: transform 0.6s ease-out;
+}
+
+
+.faq-question-split{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question{
+    font-size: 1.2rem;
+    color:hsl(237, 12%, 33%);
+    
+}
+
+.faq-question:hover{
+    color: var(--clr-text-hover);
+}
+
+.faq-answer{
+    font-size: 1rem;
+    color: var(--clr-description);
+
+    max-height: 0;
+    overflow: hidden;
+
+    transition: max-height 0.5s ease-in;
+    margin-block: 0.5rem;
+}
+
+.faq-question-single.active .faq-answer{
+    max-height: 300px;
+}
+
+.faq-question-single.active .faq-question{
+    font-weight: bold; 
+    transition: font-weight 0.3s ease-in;
+}
+
+.faq-question-single.active .faq-question-arrow{
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in;
+}
+
+/*desktop view*/
+
+@media screen and (min-width:70rem){
+
+
+    .faq-card{
+        display: flex;
+        flex-direction: row;
+        max-width: fit-content;
+        gap: 3rem;
+        box-shadow: 10px 10px 50px #00000053;
+    }
+
+    .faq-image-container{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        
+        width: 50%;
+        
+        background-image:  url(/images/illustration-woman-online-desktop.svg), url(/images/bg-pattern-desktop.svg);
+        background-repeat: no-repeat;
+        background-position: 100%;
+        background-position-y: 45%, 67%;
+
+    }
+
+    .faq-image-cube-desktop{
+        display: block;
+        position: absolute;
+        left: -34%;
+        top: 40%;
+    }
+
+    /*hide images for responsive*/
+    
+    .faq-image-mobile{
+        display: none;
+    }
+
+    .faq-image-desktop{
+        position: absolute;
+        display: block;
+        
+    }
+
+    .faq-text-container{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding: 3rem 6rem 4rem 0;
+        margin: 0 0 2rem 5rem;
+        
+    }
+    
+    .faq-title{
+        justify-content: start;
+        padding: 3rem 0;
+    }
+    
+
+
+};
